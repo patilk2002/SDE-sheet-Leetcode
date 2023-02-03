@@ -1,0 +1,27 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        List<Integer> l1=new ArrayList<>();
+        // l1.add(nums[nums.length/3]);
+        HashMap<Integer,Integer> hm=new HashMap<>();
+        for(int i:nums){
+            if(!(hm.containsKey(i))){
+                hm.put(i,1);
+            }
+            else{
+                int count=hm.get(i);
+                hm.put(i,++count);
+            }
+        }
+
+        for(int i: hm.keySet()){
+            System.out.println(i+" "+hm.get(i));
+            if(hm.get(i)>nums.length/3){
+                l1.add(i);
+            }
+        }
+
+
+        return l1;
+    }
+}
